@@ -21,13 +21,15 @@
             <v-btn flat class="hidden-sm-and-down" :to="{ name: 'dashboard' }">Dashboard</v-btn>
             <v-btn flat class="hidden-sm-and-down" :to="{ name: 'home' }">New Proposal</v-btn>
             <v-spacer class="hidden-sm-and-down"/>
-            <v-btn color="purple lighten-3" class="hidden-sm-and-down">LOG IN</v-btn>
+            <app-login-button/>
         </v-toolbar>
     </span>
 
 </template>
 
 <script>
+import AppLoginButton from '@/components/AppLoginButton' 
+
 export default {
     name: 'AppNavigation',
     data() {
@@ -36,10 +38,12 @@ export default {
             drawer: false,
             items: [
                 { title: 'Dashboard' },
-                { title: 'New Proposal' },
-                { title: 'Log In' }
+                { title: 'New Proposal' }
             ]
         };
+    },
+    components: {
+        AppLoginButton
     }
 };
 </script>

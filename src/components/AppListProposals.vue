@@ -31,7 +31,7 @@
 
 <script>
 export default {
-    name: "AppServerProposals",
+    name: "AppListProposals",
     props: {
         proposals: Array
     }

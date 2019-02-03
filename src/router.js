@@ -42,6 +42,12 @@ export default new Router({
             props: true,
             component: () =>
                 import(/* webpackChunkName: "user" */ './views/User.vue')
+        },
+        {
+            path: '/authRedirect',
+            name: 'authRedirect',
+            component: () => 
+                import(/* webpackChunkName: "authRedirect" */ './views/Redirect.vue')
         }
     ]
 });
