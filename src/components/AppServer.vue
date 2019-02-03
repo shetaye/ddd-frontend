@@ -27,33 +27,29 @@
 </template>
 
 <script>
-import Proposal from '@/services/proposal'
-import User from '@/services/user'
-import Server from '@/services/server'
-
 import AppDocumentLinkButton from '@/components/AppDocumentLinkButton'
 import AppListProposals from '@/components/AppListProposals'
 import AppServerUsers from '@/components/AppServerUsers'
+
+import { mapState } from 'vuex'
 
 export default {
     name: 'AppServer',
     props: {
         id: String
     },
+    mounted() {
+        /* Make action calls for user, server, and proposal data. */
+        this.$store.dispatch('server/fetchServer', { id: this.$props.id });
+        this.$store.dispatch('server/fetchUsers', { id: this.$props.id });
+        this.$store.dispatch('server/fetchProposals', { id: this.$props.id });
+    },
     computed: {
-        server(){
-            return Server.getServer(parseInt(this.id))
-        },
-        proposals(){
-            return this.server.proposals;
-        },
-        users(){
-            let users = [];
-            for(let id in this.server.users){
-                users.push(User.getUser(id))
-            }
-            return users;
-        }
+        ...mapState({
+            server: state => state.server.server,
+            proposals: state => state.server.proposals,
+            users: state => state.server.users,
+        }),
     },
     components: {
         AppDocumentLinkButton,

@@ -11,7 +11,8 @@
                                     <v-icon :class="'red lighten-1 white--text'">clear</v-icon>
                                 </v-list-tile-avatar>
                                 <v-list-tile-content>
-                                    <v-list-tile-title>{{ user.name }}</v-list-tile-title>
+                                    <v-list-tile-title>{{ `${user.username}#${user.discriminator}` }}</v-list-tile-title>
+                                    <v-list-tile-sub-title>Role Name</v-list-tile-sub-title>
                                 </v-list-tile-content>
                             </v-list-tile>
                         </template>

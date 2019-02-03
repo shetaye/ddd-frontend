@@ -1,9 +1,9 @@
 export default {
-    user(state) {
-        return state.user;
+    server(state) {
+        return state.server;
     },
-    servers(state) {
-        return state.servers;
+    users(state) {
+        return state.users;
     },
     proposals(state) {
         return state.proposals;

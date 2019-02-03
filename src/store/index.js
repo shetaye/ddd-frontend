@@ -7,6 +7,7 @@ import mutations from './mutations';
 
 import authModule from './modules/auth';
 import userModule from './modules/user';
+import serverModule from './modules/server';
 
 Vue.use(Vuex);
 
@@ -21,5 +22,6 @@ export default new Vuex.Store({
     modules: {
         'auth': authModule,
         'user': userModule,
+        'server': serverModule,
     }
 });

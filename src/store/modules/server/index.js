@@ -8,7 +8,7 @@ export default {
     state: {
         server: {},
         proposals: [],
-        user: [],
+        users: [],
     },
     actions,
     getters,

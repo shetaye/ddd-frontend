@@ -1,18 +1,18 @@
-import { SET_USER, SET_USER_PROPOSALS, SET_USER_SERVERS, CLEAR_USER } from './mutation-types';
+import { SET_SERVER, SET_SERVER_PROPOSALS, SET_SERVER_USERS, CLEAR_SERVER } from './mutation-types';
 
 export default {
-    [SET_USER](state, { user }) {
-        state.user = user;
+    [SET_SERVER](state, { server }) {
+        state.server = server;
     },
-    [SET_USER_PROPOSALS](state, { proposals }) {
+    [SET_SERVER_PROPOSALS](state, { proposals }) {
         state.proposals = proposals;
     },
-    [SET_USER_SERVERS](state, { servers }) {
-        state.servers = servers;
+    [SET_SERVER_USERS](state, { users }) {
+        state.users = users;
     },
-    [CLEAR_USER](state) {
-        state.user = {};
+    [CLEAR_SERVER](state) {
+        state.server = {};
         state.proposals = [];
-        state.servers = [];
+        state.users = [];
     }
 };
