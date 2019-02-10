@@ -23,9 +23,7 @@
 </template>
 
 <script>
-import Proposal from '@/services/proposal'
-import User from '@/services/user'
-import Server from '@/services/server'
+import { mapState } from 'vuex'
 
 import AppProposalActions from '@/components/AppProposalActions'
 import AppDocumentLinkButton from '@/components/AppDocumentLinkButton'
@@ -35,19 +33,19 @@ export default {
     props: {
         id: String
     },
+    mounted() {
+        /* Make action calls for user, server, and proposal data. */
+        this.$store.dispatch('proposal/fetchProposal', { id: this.$props.id });
+        this.$store.dispatch('proposal/fetchAuthor', { id: this.$props.id });
+        this.$store.dispatch('proposal/fetchServer', { id: this.$props.id });
+    },
     computed: {
-        proposal(){
-            return Proposal.getProposal(parseInt(this.id))
-        },
-        author(){
-            return User.getUser(parseInt(this.proposal.author))
-        },
-        actions(){
-            return this.proposal.actions
-        },
-        server(){
-            return Server.getServer(parseInt(this.proposal.server))
-        }
+        ...mapState({
+            proposal: state => state.proposal.proposal,
+            author: state => state.proposal.author,
+            server: state => state.proposal.server,
+            actions: state => state.proposal.actions,
+        }),
     },
     components: {
         AppProposalActions,

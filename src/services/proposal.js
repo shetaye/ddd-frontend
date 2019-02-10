@@ -75,7 +75,34 @@ export default {
             ]
         };
     },
-    getProposal(id) {
-        return this.getProposals().proposals[id];
+    getProposal(id, token) {
+        return api.request({
+            method: 'get',
+            url: `/proposals/${id}`,
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
+        .then((result) => {
+            return result.data;
+        })
+    },
+    getAuthor(id, token) {
+        return api.request({
+            method: 'get',
+            url: `/proposals/${id}/author`,
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
+        .then((result) => {
+            return result.data;
+        })
+    },
+    getServer(id, token) {
+        return api.request({
+            method: 'get',
+            url: `/proposals/${id}/server`,
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
+        .then((result) => {
+            return result.data;
+        })
     }
 };
