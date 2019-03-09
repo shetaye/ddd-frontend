@@ -1,10 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
+import store from '@/store';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
     mode: 'history',
     base: process.env.BASE_URL,
     routes: [
@@ -46,8 +47,25 @@ export default new Router({
         {
             path: '/authRedirect',
             name: 'authRedirect',
-            component: () => 
+            component: () =>
                 import(/* webpackChunkName: "authRedirect" */ './views/Redirect.vue')
         }
     ]
 });
+router.afterEach((to, from) => {
+    /* Getters aren't initialized at this point */
+    if (
+        !(
+            to.path.includes('proposal') |
+            to.path.includes('server') |
+            to.path.includes('user') |
+            to.path.includes('dashboard')
+        )
+    ) {
+        return;
+    }
+    if (!store.state.auth['token']) {
+        window.location.href = store.state.auth.url;
+    }
+});
+export default router;

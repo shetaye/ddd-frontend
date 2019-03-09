@@ -8,4 +8,4 @@ export default {
     proposals(state) {
         return state.proposals;
     }
-}
+};

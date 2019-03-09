@@ -21,9 +21,9 @@ export default new Vuex.Store({
     getters,
     mutations,
     modules: {
-        'auth': authModule,
-        'user': userModule,
-        'server': serverModule,
-        'proposal': proposalModule
+        auth: authModule,
+        user: userModule,
+        server: serverModule,
+        proposal: proposalModule
     }
 });

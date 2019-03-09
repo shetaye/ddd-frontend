@@ -21,14 +21,14 @@
             <v-btn flat class="hidden-sm-and-down" :to="{ name: 'dashboard' }">Dashboard</v-btn>
             <v-btn flat class="hidden-sm-and-down" :to="{ name: 'home' }">New Proposal</v-btn>
             <v-spacer class="hidden-sm-and-down"/>
-            <app-login-button/>
+            <app-navbar-profile/>
         </v-toolbar>
     </span>
 
 </template>
 
 <script>
-import AppLoginButton from '@/components/AppLoginButton' 
+import AppNavbarProfile from '@/components/AppNavbarProfile';
 
 export default {
     name: 'AppNavigation',
@@ -36,14 +36,11 @@ export default {
         return {
             appTitle: 'Direct Discord Democracy',
             drawer: false,
-            items: [
-                { title: 'Dashboard' },
-                { title: 'New Proposal' }
-            ]
+            items: [{ title: 'Dashboard' }, { title: 'New Proposal' }]
         };
     },
     components: {
-        AppLoginButton
+        AppNavbarProfile
     }
 };
 </script>

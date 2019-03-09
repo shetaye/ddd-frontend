@@ -1,4 +1,9 @@
-import { SET_PROPOSAL, CLEAR_PROPOSAL, SET_PROPOSAL_SERVER, SET_PROPOSAL_AUTHOR } from './mutation-types';
+import {
+    SET_PROPOSAL,
+    CLEAR_PROPOSAL,
+    SET_PROPOSAL_SERVER,
+    SET_PROPOSAL_AUTHOR
+} from './mutation-types';
 
 export default {
     [SET_PROPOSAL](state, { proposal }) {

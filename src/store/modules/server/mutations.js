@@ -1,4 +1,9 @@
-import { SET_SERVER, SET_SERVER_PROPOSALS, SET_SERVER_USERS, CLEAR_SERVER } from './mutation-types';
+import {
+    SET_SERVER,
+    SET_SERVER_PROPOSALS,
+    SET_SERVER_USERS,
+    CLEAR_SERVER
+} from './mutation-types';
 
 export default {
     [SET_SERVER](state, { server }) {

@@ -11,6 +11,12 @@ export default {
         });
     },
     refresh(refresh_token) {
-        //
+        return api.request({
+            method: 'post',
+            url: '/auth/refresh',
+            data: {
+                refresh_token
+            }
+        });
     }
 };

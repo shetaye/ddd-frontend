@@ -8,10 +8,10 @@
                             <v-divider :key="index * 2"/>
                             <v-list-tile :key="(index * 2) + 1" :to="{ name: 'user', params: { id: user.id }}">
                                 <v-list-tile-avatar>
-                                    <v-icon :class="'red lighten-1 white--text'">clear</v-icon>
+                                    <img :src="`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar_hash}.png?size=40`">
                                 </v-list-tile-avatar>
                                 <v-list-tile-content>
-                                    <v-list-tile-title>{{ `${user.username}#${user.discriminator}` }}</v-list-tile-title>
+                                    <v-list-tile-title>{{ user.name }}</v-list-tile-title>
                                     <v-list-tile-sub-title>Role Name</v-list-tile-sub-title>
                                 </v-list-tile-content>
                             </v-list-tile>
@@ -26,13 +26,12 @@
 
 <script>
 export default {
-    name: "AppServerUsers",
+    name: 'AppServerUsers',
     props: {
         users: Array
     }
-}
+};
 </script>
 
 <style>
-
 </style>

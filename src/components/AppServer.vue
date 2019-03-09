@@ -27,11 +27,11 @@
 </template>
 
 <script>
-import AppDocumentLinkButton from '@/components/AppDocumentLinkButton'
-import AppListProposals from '@/components/AppListProposals'
-import AppServerUsers from '@/components/AppServerUsers'
+import AppDocumentLinkButton from '@/components/AppDocumentLinkButton';
+import AppListProposals from '@/components/AppListProposals';
+import AppServerUsers from '@/components/AppServerUsers';
 
-import { mapState } from 'vuex'
+import { mapState } from 'vuex';
 
 export default {
     name: 'AppServer',
@@ -48,17 +48,16 @@ export default {
         ...mapState({
             server: state => state.server.server,
             proposals: state => state.server.proposals,
-            users: state => state.server.users,
-        }),
+            users: state => state.server.users
+        })
     },
     components: {
         AppDocumentLinkButton,
         AppListProposals,
         AppServerUsers
     }
-}
+};
 </script>
 
 <style>
-
 </style>

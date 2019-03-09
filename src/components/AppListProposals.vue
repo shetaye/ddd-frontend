@@ -31,13 +31,12 @@
 
 <script>
 export default {
-    name: "AppListProposals",
+    name: 'AppListProposals',
     props: {
         proposals: Array
     }
-}
+};
 </script>
 
 <style>
-
 </style>

@@ -22,9 +22,8 @@ export default {
         subTitle: String,
         location: Object
     }
-}
+};
 </script>
 
 <style>
-
 </style>

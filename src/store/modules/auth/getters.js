@@ -3,6 +3,6 @@ export default {
         return state.token ? true : false;
     },
     authHeader(state) {
-        return { 'Authorization': `Bearer ${state.token}` }
+        return { Authorization: `Bearer ${state.token}` };
     }
-}
+};

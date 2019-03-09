@@ -76,33 +76,36 @@ export default {
         };
     },
     getProposal(id, token) {
-        return api.request({
-            method: 'get',
-            url: `/proposals/${id}`,
-            headers: { 'Authorization': `Bearer ${token}` }
-        })
-        .then((result) => {
-            return result.data;
-        })
+        return api
+            .request({
+                method: 'get',
+                url: `/proposals/${id}`,
+                headers: { Authorization: `Bearer ${token}` }
+            })
+            .then(result => {
+                return result.data;
+            });
     },
     getAuthor(id, token) {
-        return api.request({
-            method: 'get',
-            url: `/proposals/${id}/author`,
-            headers: { 'Authorization': `Bearer ${token}` }
-        })
-        .then((result) => {
-            return result.data;
-        })
+        return api
+            .request({
+                method: 'get',
+                url: `/proposals/${id}/author`,
+                headers: { Authorization: `Bearer ${token}` }
+            })
+            .then(result => {
+                return result.data;
+            });
     },
     getServer(id, token) {
-        return api.request({
-            method: 'get',
-            url: `/proposals/${id}/server`,
-            headers: { 'Authorization': `Bearer ${token}` }
-        })
-        .then((result) => {
-            return result.data;
-        })
+        return api
+            .request({
+                method: 'get',
+                url: `/proposals/${id}/server`,
+                headers: { Authorization: `Bearer ${token}` }
+            })
+            .then(result => {
+                return result.data;
+            });
     }
 };

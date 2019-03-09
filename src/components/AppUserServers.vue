@@ -7,8 +7,8 @@
                         <template v-for="(server,index) in servers">
                             <v-divider :key="index * 2"/>
                             <v-list-tile :key="(index * 2) + 1" :to="{ name: 'server', params: { id: server.id }}">
-                                <v-list-tile-avatar>
-                                    <v-icon :class="'red lighten-1 white--text'">clear</v-icon>
+                                <v-list-tile-avatar :size="40">
+                                    <img :src="`https://cdn.discordapp.com/icons/${server.id}/${server.icon_hash}?size=40`">
                                 </v-list-tile-avatar>
                                 <v-list-tile-content>
                                     <v-list-tile-title>{{ server.name }}</v-list-tile-title>
@@ -25,13 +25,12 @@
 
 <script>
 export default {
-    name: "AppUserServers",
+    name: 'AppUserServers',
     props: {
         servers: Array
     }
-}
+};
 </script>
 
 <style>
-
 </style>

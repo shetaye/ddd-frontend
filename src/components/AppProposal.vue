@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from 'vuex';
 
-import AppProposalActions from '@/components/AppProposalActions'
-import AppDocumentLinkButton from '@/components/AppDocumentLinkButton'
+import AppProposalActions from '@/components/AppProposalActions';
+import AppDocumentLinkButton from '@/components/AppDocumentLinkButton';
 
 export default {
     name: 'AppProposal',
@@ -44,16 +44,15 @@ export default {
             proposal: state => state.proposal.proposal,
             author: state => state.proposal.author,
             server: state => state.proposal.server,
-            actions: state => state.proposal.actions,
-        }),
+            actions: state => state.proposal.proposal.actions
+        })
     },
     components: {
         AppProposalActions,
         AppDocumentLinkButton
     }
-}
+};
 </script>
 
 <style>
-
 </style>

@@ -1,4 +1,9 @@
-import { SET_USER, SET_USER_PROPOSALS, SET_USER_SERVERS, CLEAR_USER } from './mutation-types';
+import {
+    SET_USER,
+    SET_USER_PROPOSALS,
+    SET_USER_SERVERS,
+    CLEAR_USER
+} from './mutation-types';
 
 export default {
     [SET_USER](state, { user }) {
