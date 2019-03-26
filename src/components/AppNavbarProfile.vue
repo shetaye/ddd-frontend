@@ -1,6 +1,6 @@
 <template>
     <span>
-        <v-btn v-if="!this.loggedIn" :href="this.$store.state.auth.url" color="purple lighten-3" class="hidden-sm-and-down">LOG IN</v-btn>
+        <v-btn v-if="!this.loggedIn" :href="this.generateState()" color="purple lighten-3" class="hidden-sm-and-down">LOG IN</v-btn>
         <v-avatar v-else>
             <img v-if="this.$store.getters['currentUser/user']" :src="`https://cdn.discordapp.com/avatars/${this.user.id}/${this.user.avatar_hash}.png?size=40`">
         </v-avatar>
@@ -28,6 +28,19 @@ export default {
             } else {
                 this.$store.unregisterModule('currentUser');
             }
+        }
+    },
+    methods: {
+        generateState() {
+            /* Generate state */
+            let authState = new Uint32Array(1);
+            if (window.crypto.getRandomValues) {
+                window.crypto.getRandomValues(authState);
+            } else {
+                authState[0] = 0;
+            }
+            authState = authState[0];
+            return `${this.$store.state.auth.url}&state=${authState}`;
         }
     },
     computed: {
