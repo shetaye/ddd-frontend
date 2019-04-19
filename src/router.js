@@ -65,6 +65,7 @@ router.afterEach((to, from) => {
         return;
     }
     if (!store.state.auth['token']) {
+        // TODO: USE STATE HERE!
         window.location.href = store.state.auth.url;
     }
 });

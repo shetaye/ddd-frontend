@@ -7,5 +7,8 @@ export default {
     },
     server(state) {
         return state.server;
+    },
+    vote(state) {
+        return state.vote;
     }
 };

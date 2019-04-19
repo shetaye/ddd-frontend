@@ -6,10 +6,8 @@ export default {
     namespaced: true,
     state() {
         return {
-            proposal: {},
-            author: {},
-            server: {},
-            vote: {}
+            url: 'http://ddd.io:1023',
+            proposalSocket: null,
         };
     },
     actions,
