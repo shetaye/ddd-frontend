@@ -14,6 +14,9 @@ export default {
         state.proposalSocket.on('refetchProposal', () => {
             dispatch('proposal/fetchProposal', { id }, { root: true });
         });
+        state.proposalSocket.on('refetchProposalVote', () => {
+            dispatch('proposal/fetchVote', { id }, { root: true });
+        })
     },
     closeProposalSocket({ commit }) {
         commit(CLOSE_PROPOSAL_SOCKET);
