@@ -1,5 +1,5 @@
 export default {
     proposal(state) {
-        return state.proposalSocket
+        return state.proposalSocket;
     }
 };

@@ -7,7 +7,7 @@ export default {
     state() {
         return {
             url: 'http://ddd.io:1023',
-            proposalSocket: null,
+            proposalSocket: null
         };
     },
     actions,

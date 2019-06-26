@@ -46,7 +46,9 @@ export default {
         this.$store.dispatch('live/openProposalSocket', { id: this.$props.id });
     },
     beforeDestroy() {
-        this.$store.dispatch('live/closeProposalSocket', { id: this.$props.id });
+        this.$store.dispatch('live/closeProposalSocket', {
+            id: this.$props.id
+        });
     },
     computed: {
         ...mapState({
@@ -55,12 +57,12 @@ export default {
             author: state => state.proposal.author,
             server: state => state.proposal.server,
             actions: state => state.proposal.proposal.actions
-        }),
+        })
     },
     components: {
         AppProposalActions,
         AppDocumentLinkButton,
-        AppProposalVote,
+        AppProposalVote
     }
 };
 </script>

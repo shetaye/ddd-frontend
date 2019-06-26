@@ -51,7 +51,7 @@ export default {
                 method: 'post',
                 url: `/proposals/${id}/vote`,
                 data: {
-                    vote: vote,
+                    vote: vote
                 },
                 headers: { Authorization: `Bearer ${token}` }
             })

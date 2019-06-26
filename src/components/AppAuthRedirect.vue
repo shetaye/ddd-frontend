@@ -17,7 +17,7 @@ export default {
         } else if (authCode) {
             this.$store.dispatch('auth/fromRedirect', { code: authCode });
         }
-        
+
         this.$router.push({ name: 'home' });
     }
 };

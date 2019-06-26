@@ -42,22 +42,20 @@ export default {
             const oldVote = this.vote.vote;
             const newVote = vote;
             let voteO;
-            if(!oldVote) {
+            if (!oldVote) {
                 // User voting for first time
                 voteO = {
                     voted: true,
                     vote: newVote
                 };
-            }
-            else {
+            } else {
                 // User switching vote
-                if(newVote == oldVote) {
+                if (newVote == oldVote) {
                     // User removes vote
                     voteO = {
                         voted: false
                     };
-                }
-                else {
+                } else {
                     // User switching vote
                     voteO = {
                         voted: true,
@@ -65,12 +63,14 @@ export default {
                     };
                 }
             }
-            this.$store.dispatch('proposal/pushVote', { id: this.$props.id, vote: voteO})
+            this.$store.dispatch('proposal/pushVote', {
+                id: this.$props.id,
+                vote: voteO
+            });
         }
     }
-}
+};
 </script>
 
 <style>
-
 </style>

@@ -45,9 +45,11 @@ export default {
         if (!rootGetters['auth/loggedIn']) {
             return;
         }
-        proposal.postVote(id, vote, rootState.auth.token).then(({ proposal, vote }) => {
-            commit(SET_PROPOSAL, { proposal });
-            commit(SET_PROPOSAL_VOTE, { vote })
-        });
+        proposal
+            .postVote(id, vote, rootState.auth.token)
+            .then(({ proposal, vote }) => {
+                commit(SET_PROPOSAL, { proposal });
+                commit(SET_PROPOSAL_VOTE, { vote });
+            });
     }
 };
