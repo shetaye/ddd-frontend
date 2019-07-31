@@ -19,7 +19,7 @@
                     <router-link :to="{ name: 'home' }">{{appTitle}}</router-link>
             </v-toolbar-title>
             <v-btn flat class="hidden-sm-and-down" :to="{ name: 'dashboard' }">Dashboard</v-btn>
-            <v-btn flat class="hidden-sm-and-down" :to="{ name: 'home' }">New Proposal</v-btn>
+            <v-btn flat class="hidden-sm-and-down" :to="{ name: 'proposalWizard' }">New Proposal</v-btn>
             <v-spacer class="hidden-sm-and-down"/>
             <app-navbar-profile/>
         </v-toolbar>

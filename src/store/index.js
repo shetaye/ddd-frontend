@@ -10,6 +10,7 @@ import userModule from './modules/user';
 import serverModule from './modules/server';
 import proposalModule from './modules/proposal';
 import liveModule from './modules/live';
+import autocompleteModule from './modules/autocomplete';
 
 Vue.use(Vuex);
 
@@ -26,6 +27,7 @@ export default new Vuex.Store({
         user: userModule,
         server: serverModule,
         proposal: proposalModule,
-        live: liveModule
+        live: liveModule,
+        autocomplete: autocompleteModule
     }
 });

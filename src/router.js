@@ -31,6 +31,13 @@ const router = new Router({
                 import(/* webpackChunkName: "proposal" */ './views/Proposal.vue')
         },
         {
+            path: '/proposal/',
+            name: 'proposalWizard',
+            props: true,
+            component: () =>
+                import(/* webpackChunkName: "proposal" */ './views/ProposalWizard.vue')
+        },
+        {
             path: '/server/:id',
             name: 'server',
             props: true,
