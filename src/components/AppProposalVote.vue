@@ -5,7 +5,7 @@
                 <div class="text-xs-center">
                     <v-btn
                     fab
-                    :color="vote.voted&&vote.vote=='y' ? 'success' : 'grey lighten-3'"
+                    :color=" vote.voted && vote.vote=='y' ? 'success' : 'grey lighten-3'"
                     @click="pushVote('y')">
                         <v-icon>thumb_up</v-icon>
                     </v-btn>
@@ -18,7 +18,7 @@
                 <div class="text-xs-center">
                     <v-btn
                     fab
-                    :color="vote.voted&&vote.vote=='n' ? 'error' : 'grey lighten-3'"
+                    :color=" vote.voted&& vote.vote=='n' ? 'error' : 'grey lighten-3'"
                     @click="pushVote('n')">
                         <v-icon>thumb_down</v-icon>
                     </v-btn>
@@ -29,44 +29,36 @@
 </template>
 
 <script>
+
 export default {
     name: 'AppProposalVote',
+    model: {
+        prop: 'vote',
+        event: 'vote-update',
+    },
     props: {
-        vote: Object,
-        id: String,
-        score: Number
+        score: Number,
+        vote: Object
     },
     methods: {
-        pushVote(vote) {
+        pushVote(voteString) {
             // Build vote object
-            const oldVote = this.vote.vote;
-            const newVote = vote;
-            let voteO;
-            if (!oldVote) {
-                // User voting for first time
-                voteO = {
-                    voted: true,
-                    vote: newVote
-                };
-            } else {
-                // User switching vote
-                if (newVote == oldVote) {
-                    // User removes vote
-                    voteO = {
-                        voted: false
-                    };
-                } else {
-                    // User switching vote
-                    voteO = {
-                        voted: true,
-                        vote: newVote
-                    };
-                }
+
+            // Vote object already exists, clicked on different vote
+            if(this.vote.voted && voteString != this.vote.vote) {
+                this.$emit('vote-update', {voted: true, vote: voteString});
+                this.$emit('vote-change')
             }
-            this.$store.dispatch('proposal/pushVote', {
-                id: this.$props.id,
-                vote: voteO
-            });
+            // Vote object already exists, clicked on same vote
+            if(this.vote.voted && voteString == this.vote.vote) {
+                this.$emit('vote-update', {voted: false});
+                this.$emit('vote-remove');
+            }
+            // Vote object does not exist
+            if(!this.vote.voted) {
+                this.$emit('vote-update', {voted: true, vote: voteString});
+                this.$emit('vote-create');
+            }
         }
     }
 };

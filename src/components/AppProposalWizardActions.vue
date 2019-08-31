@@ -76,7 +76,7 @@
                                             label="User"
                                             item-value="id"
                                             item-text="name"
-                                            :items="autocompleteUsers"
+                                            :items="users"
                                             required
                                         ></v-autocomplete>
                                         <v-text-field
@@ -112,7 +112,7 @@
                                             label="Role"
                                             item-value="id"
                                             item-text="name"
-                                            :items="autocompleteRoles"
+                                            :items="roles"
                                             required
                                         ></v-autocomplete>
                                         <v-autocomplete
@@ -130,7 +130,7 @@
                                             label="Role"
                                             item-value="id"
                                             item-text="name"
-                                            :items="autocompleteRoles"
+                                            :items="roles"
                                             required
                                         ></v-autocomplete>
                                         <v-autocomplete
@@ -148,7 +148,7 @@
                                             label="Role"
                                             item-value="id"
                                             item-text="name"
-                                            :items="autocompleteRoles"
+                                            :items="roles"
                                             required
                                         ></v-autocomplete>
                                         Position value not implemented
@@ -158,7 +158,7 @@
                             </v-container>
                         </v-card-text>
                         <v-card-actions>
-                            <v-btn flat @click="add(); dialog = false">Add</v-btn>
+                            <v-btn flat @click="dialog = false; add()">Add</v-btn>
                             <v-btn flat @click="dialog = false">Cancel</v-btn>
                         </v-card-actions>
                     </v-card>
@@ -170,25 +170,18 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 
 export default {
     name: 'AppProposalWizardActions',
     props: {
         value: Array,
-        serverId: String
-    },
-    mounted() {
-        this.$store.dispatch('autocomplete/fetchServerAutocomplete', { id: this.serverId })
+        serverId: String,
+        users: Array,
+        roles: Array,
+        channels: Array
     },
     // To call again if the value changes (no remount)
     watch: {
-        serverId(newVal, oldVal) {
-            // Fetch new autocomplete data
-            this.$store.dispatch('autocomplete/fetchServerAutocomplete', { id: newVal });
-            // Clear actions (since their id's are invalid)
-            this.actions.clear();
-        },
         code(newVal, oldVal) {
             // Clear params each time
             this.p0 = undefined;
@@ -200,7 +193,7 @@ export default {
         return {
             actions: this.value,
             dialog: false,
-
+            
             // Autocomplete's
             autocompleteActions: [
                 { name: 'Kick', id: 1000 },
@@ -299,16 +292,11 @@ export default {
         }
     },
     computed: {
-        ...mapGetters({
-            autocompleteUsers: 'autocomplete/users',
-            autocompleteRoles: 'autocomplete/roles',
-            autocompleteChannels: 'autocomplete/channels'
-        }),
         resolvedp0() {
             switch(this.code) {
                 case 1000:
                 case 1001:
-                    return this.autocompleteUsers.find((user) => {
+                    return this.users.find((user) => {
                         return user.id == this.p0;
                     }).name;
                 break;
@@ -317,7 +305,7 @@ export default {
                     break;
                 case 2001:
                 case 2002:
-                    return this.autocompleteRoles.find((role) => {
+                    return this.roles.find((role) => {
                         return role.id == this.p0;
                     }).name;
                 default:

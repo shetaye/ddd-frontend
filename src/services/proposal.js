@@ -45,7 +45,22 @@ export default {
                 return result.data;
             });
     },
-    postVote(id, vote, token) {
+    updateVote(id, vote, token) {
+        return api
+            .request({
+                method: 'patch',
+                url: `/proposals/${id}/vote`,
+                data: {
+                    vote: vote
+                },
+                headers: { Authorization: `Bearer ${token}` }
+            })
+            .then(result => {
+                return result.data;
+            })
+            .catch(console.log)
+    },
+    createVote(id, vote, token) {
         return api
             .request({
                 method: 'post',
@@ -53,6 +68,17 @@ export default {
                 data: {
                     vote: vote
                 },
+                headers: { Authorization: `Bearer ${token}` }
+            })
+            .then(result => {
+                return result.data;
+            });
+    },
+    deleteVote(id, token) {
+        return api
+            .request({
+                method: 'delete',
+                url: `/proposals/${id}/vote`,
                 headers: { Authorization: `Bearer ${token}` }
             })
             .then(result => {
