@@ -7,10 +7,10 @@ import mutations from './mutations';
 
 import authModule from './modules/auth';
 import userModule from './modules/user';
-import serverModule from './modules/server';
-import proposalModule from './modules/proposal';
-import liveModule from './modules/live';
-import autocompleteModule from './modules/autocomplete';
+// import serverModule from './modules/server';
+// import proposalModule from './modules/proposal';
+// import liveModule from './modules/live';
+// import autocompleteModule from './modules/autocomplete';
 
 Vue.use(Vuex);
 
@@ -25,9 +25,9 @@ export default new Vuex.Store({
     modules: {
         auth: authModule,
         user: userModule,
-        server: serverModule,
-        proposal: proposalModule,
-        live: liveModule,
-        autocomplete: autocompleteModule
+        // server: serverModule,
+        // proposal: proposalModule,
+        // live: liveModule,
+        // autocomplete: autocompleteModule
     }
 });
